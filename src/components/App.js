@@ -1,16 +1,30 @@
 
-import React from "react";
+import React,{useState} from "react";
 import './../styles/App.css';
-import Child from "./Child";
+
 
 const App = () => {
+  const [text,setText]=useState("");
+
+
+  function handleClick(e){
+    setText(e.target.value);
+  }
+
+
+
+
   return (
-    <div style={{backgroundColor:'#a2ec0b',padding:'1rem'}} className="parent">
-        {/* Do not remove the main div */}
-        <h1>Parent Component</h1>
-      <p>{inputValue}</p>
-      <Child setValue={setInputValue} value={inputValue}/>
+    <div>
+    <div className="parent">
+      <h1>Parent Component</h1>
+      {text}
+      <div className="child">
+        <h2>Child Component</h2>
+        <input type="text" onChange={handleClick}/>
+      </div>
     </div>
+   </div>
   )
 }
 
